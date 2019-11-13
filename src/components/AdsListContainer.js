@@ -3,6 +3,7 @@ import internet from 'superagent'
 import {connect} from 'react-redux'
 import AdsList from './AdsList'
 import {fetchAds} from '../actions/adsAction'
+import CreateAdForm from './CreateAdForm'
 
 class AdsListContainer extends React.Component {
   state = { value: ''}
@@ -21,6 +22,7 @@ class AdsListContainer extends React.Component {
       return <p>Loading...</p>
     }else{
       return <div>
+        <CreateAdForm />
         <AdsList ads={this.props.ads} />
       </div> 
     }
