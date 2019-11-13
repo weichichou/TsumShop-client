@@ -6,8 +6,7 @@ import {fetchAds} from '../actions/adsAction'
 import CreateAdForm from './CreateAdForm'
 
 class AdsListContainer extends React.Component {
-  state = { value: ''}
-  
+    
   componentDidMount() {
     console.log('mounting?')
     internet.get('http://localhost:4000/ads') 

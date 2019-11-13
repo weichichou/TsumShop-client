@@ -2,6 +2,7 @@ import React from 'react'
 import internet from 'superagent'
 import {connect} from 'react-redux'
 import {fetchAds} from '../actions/adsAction'
+import {Link} from 'react-router-dom'
 
 class DetailPage extends React.Component {
   state = { 
@@ -10,7 +11,11 @@ class DetailPage extends React.Component {
     pictureUrl:'',
     price: 0,
     desc: '',
-    userId: 1}
+    userId: 1,
+    userName: '',
+    userEmail:'',
+    userPhone:0
+}
   
   componentDidMount() {
     console.log('mounting?')
@@ -24,26 +29,30 @@ class DetailPage extends React.Component {
             pictureUrl: res.body.pictureUrl,
             price: res.body.price,
             desc: res.body.desc,
-            userId: res.body.userId})
+            userId: res.body.userId,
+            userName: res.body.user.username,
+            userEmail: res.body.user.email,
+            userPhone: res.body.user.phone})
       })
   }
 
   render() {
-    console.log(this.state.title)
     if(!this.props.ads){
       return <p>Loading...</p>
     }else{
       return <div>
-        <h2>This is Detail Page</h2>
-        <h3>Product Title: {this.state.title}</h3>
+        <Link to='/' >
+            <p>Back to Homepage</p>
+        </Link>
+        <h2>Product Title: {this.state.title}</h2>
         <img src={this.state.pictureUrl} alt={this.state.title} height='300px'/>
         <h4>{this.state.desc}</h4>
         <h4>Price: {this.state.price} €</h4>
         <div>
-            <h3>Seller's info</h3>
-            <h4>Seller: {this.state.userId}</h4>
-            <h4>Email: </h4>
-            <h4>Phone: </h4>
+            <h2>Seller's info</h2>
+            <h4>Seller: {this.state.userName}</h4>
+            <h4>Email: {this.state.userEmail}</h4>
+            <h4>Phone: {this.state.userPhone}</h4>
         </div>
         
       </div> 
