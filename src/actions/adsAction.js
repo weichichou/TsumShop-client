@@ -16,6 +16,15 @@ export function getSingleAd(ad){
     }
 }
 
+export const DELETE_AD = 'DELETE_AD'
+
+export function deleteAd(ad){
+    return {
+        type: DELETE_AD,
+        payload: ad
+    }
+}
+
 export const CREATE_AD = 'CREATE_AD'
 
 export function createAd(ad){

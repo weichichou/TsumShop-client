@@ -62,7 +62,6 @@ class DetailPage extends React.Component {
 
 const mapStateToProps = state => ({
   ads: state.ads,
-  //ad: state.ad
 })
 
 const mapDispatchToProps = {getSingleAd}
