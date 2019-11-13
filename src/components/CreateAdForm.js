@@ -1,13 +1,15 @@
 import React from 'react'
 import internet from 'superagent'
+import{createAd} from '../actions/adsAction'
+import {connect} from 'react-redux'
 
-export default class CreateAdForm extends React.Component {
+class CreateAdForm extends React.Component {
     state = {
         title: '',
         price: 0,
         desc: '',
         pictureUrl: '',
-        UserId: 1
+        userId: 1
     }
 
     handleChange = (event) => {
@@ -22,7 +24,7 @@ export default class CreateAdForm extends React.Component {
         internet
             .post('http://localhost:4000/ads')
             .send(this.state)
-            .then(res => console.log('create form body', res.body))
+            .then(res => this.props.createAd(res.body))
     }
 
     render(){
@@ -49,3 +51,11 @@ export default class CreateAdForm extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+    ads: state.ads
+  })
+  
+  const mapDispatchToProps = {createAd}
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(CreateAdForm)
