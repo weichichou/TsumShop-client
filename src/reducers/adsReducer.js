@@ -8,8 +8,7 @@ export default (state=[], action={}) => {
             return [...state,
             {TheOneAd: action.payload}]
         case CREATE_AD:
-            return [...state,
-            {...action.payload}]
+            return [{...action.payload},...state]
         case DELETE_AD:
             return state.filter(ad => ad.id !== action.payload.id)
         default:
