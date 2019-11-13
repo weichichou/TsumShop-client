@@ -7,6 +7,15 @@ export function fetchAds(ads){
     }
 }
 
+export const GET_SINGLE_AD = 'GET_SINGLE_AD'
+
+export function getSingleAd(ad){
+    return {
+        type: GET_SINGLE_AD,
+        payload: ad
+    }
+}
+
 export const CREATE_AD = 'CREATE_AD'
 
 export function createAd(ad){

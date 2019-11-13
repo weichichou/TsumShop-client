@@ -1,7 +1,7 @@
 import React from 'react'
 import internet from 'superagent'
 import {connect} from 'react-redux'
-import {fetchAds} from '../actions/adsAction'
+import {getSingleAd} from '../actions/adsAction'
 import {Link} from 'react-router-dom'
 
 class DetailPage extends React.Component {
@@ -23,7 +23,7 @@ class DetailPage extends React.Component {
     internet.get(`http://localhost:4000/ads/${this.state.id}`) 
       .then(res => {
         console.log('res.body:',res.body)
-        this.props.fetchAds(res.body)
+        this.props.getSingleAd(res.body)
         this.setState({
             title: res.body.title,
             pictureUrl: res.body.pictureUrl,
@@ -62,10 +62,9 @@ class DetailPage extends React.Component {
 
 const mapStateToProps = state => ({
   ads: state.ads,
-  //create another state for singel ad??
   //ad: state.ad
 })
 
-const mapDispatchToProps = {fetchAds}
+const mapDispatchToProps = {getSingleAd}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPage)
