@@ -6,3 +6,12 @@ export function fetchAds(ads){
         payload: ads
     }
 }
+
+export const CREATE_AD = 'CREATE_AD'
+
+export function createAd(ad){
+    return {
+        type: CREATE_AD,
+        payload: ad
+    }
+}
